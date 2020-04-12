@@ -1,0 +1,33 @@
+﻿@model IEnumerable<QuirkyBookRental.Models.Genre>
+@using QuirkyBookRental.Models
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Genre</h2>
+
+@Html.Partial("_CreateButtonPartial")
+
+<table class="table table-condensed table-hover">
+    <tr class="table-header">
+        <th>
+            @Html.DisplayNameFor(m=>m.name)
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(m=>item.name)
+            </td>
+            <td>
+                @Html.Partial("_TableButtonPartial", new IndividualButtonPartial { GenreId = item.Id })
+            </td>
+        </tr>
+    }
+</table>
+
